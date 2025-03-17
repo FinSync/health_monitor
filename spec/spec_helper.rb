@@ -1,4 +1,9 @@
 # frozen_string_literal: true
+ENV['RAILS_ENV'] ||= 'test'
+ENV['RAILS_ENV'] = 'test' if ENV['RAILS_ENV'] == 'development' # AKA running rspec directly from the command line
+
+require "action_controller/railtie"
+require 'rspec/rails'
 
 require "health_monitor"
 
