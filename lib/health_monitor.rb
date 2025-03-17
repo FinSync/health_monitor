@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
-require_relative "health_monitor/version"
+require "health_monitor/version"
+require "health_monitor/engine"
 
 module HealthMonitor
-  class Error < StandardError; end
   # Your code goes here...
 end
