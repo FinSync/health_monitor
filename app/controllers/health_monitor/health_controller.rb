@@ -1,7 +1,8 @@
 module HealthMonitor
   class HealthController < ApplicationController
     def index
-      render json: { status: 'UP' }
+      status = HealthCheckService.new.call
+      render json: status
     end
   end
 end
