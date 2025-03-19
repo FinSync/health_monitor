@@ -1,9 +1,22 @@
 module HealthMonitor
   class HealthCheckService
     def call
-      status = { rails_version: Rails::VERSION::STRING }.merge(postgres_check).merge(redis_check)
+      status = { rails_version: Rails::VERSION::STRING }
+               .merge(ruby_check)
+               .merge(postgres_check)
+               .merge(redis_check)
+
+      HealthMonitor.additional_checks.each do |check_klass|
+        status = status.merge(check_klass.safe_constantize.status_check)
+      end
 
       status
+    end
+
+    def ruby_check
+      status = "2\n" == `ruby -e 'puts 1 + 1'` ? 'ok' : 'down'
+
+      { ruby: status }
     end
 
     def postgres_check
