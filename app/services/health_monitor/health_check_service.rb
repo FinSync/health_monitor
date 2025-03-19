@@ -6,8 +6,8 @@ module HealthMonitor
                .merge(postgres_check)
                .merge(redis_check)
 
-      HealthMonitor.additional_checks.each do |check_klass|
-        status = status.merge(check_klass.safe_constantize.status_check)
+      HealthMonitor.additional_health_checks.each do |health_check_klass|
+        status = status.merge(health_check_klass.safe_constantize.health_check)
       end
 
       status
