@@ -8,6 +8,8 @@ gem 'concurrent-ruby', '1.3.4'
 
 group :development, :test do
   gem "rspec-rails", "~> 6.1"
+  gem 'rspec-its'
+  gem 'activerecord-nulldb-adapter'
 end
 
 # To use a debugger
