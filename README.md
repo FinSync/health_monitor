@@ -1,8 +1,5 @@
 # HealthMonitor
-Short description and motivation.
-
-## Usage
-How to use my plugin.
+Add a health check endpoint for AWS Load Balancer monitoring
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -21,8 +18,39 @@ Or install it yourself as:
 $ gem install health_monitor
 ```
 
-## Contributing
-Contribution directions go here.
+## Usage
+Add the Rails engine included in the gem to your routes by adding
+
+```ruby
+mount HealthMonitor::Engine, at: '/'
+```
+
+to config/routes.rb
+
+Set the environment variable `HEALTH_MONITOR_API_TOKEN` to add a header token which helps prevent denial of service attacks. Set the request header `api_token` with the header token when making an HTTP request. For example:
+
+```bash
+curl -H "api_token: 12344321" https://myapp.com/health
+```
+
+### Custom Health Checks
+The base checks test Postgres, Redis, and the Ruby interpreter as well as listing the Rails version. Additional health checks can be added. Each customer health check needs to be a class with a static method called `health_check`. For example:
+
+```ruby
+class TestHealthCheck
+  def self.health_check
+    { test_health_check: 'ok' }
+  end
+end
+```
+
+The class name needs to be added to the list of additional checks during setup (typically in an initializer file):
+
+```ruby
+HealthMonitor.setup do |config|
+  config.additional_health_checks = ['TestHealthCheck']
+end
+```
 
 ## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+Copyright (c) 2025 FINSYNC, Inc. All Rights Reserved.
