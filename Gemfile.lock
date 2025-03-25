@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    health_monitor (0.5.0)
+    health_monitor (1.0.0)
       pg (~> 1.2)
       rails (~> 6.1.7, >= 6.1.7.1)
 
