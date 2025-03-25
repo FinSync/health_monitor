@@ -27,10 +27,10 @@ mount HealthMonitor::Engine, at: '/'
 
 to config/routes.rb
 
-Set the environment variable `HEALTH_MONITOR_API_TOKEN` to add a header token which helps prevent denial of service attacks. Set the request header `api_token` with the header token when making an HTTP request. For example:
+Set the environment variable `HEALTH_MONITOR_API_TOKEN` to add a token which helps prevent denial of service attacks. Set the query parameter `API_TOKEN` with the token value when making an HTTP request. For example:
 
-```bash
-curl -H "api_token: 12344321" https://myapp.com/health
+```http
+https://myapp.com/health?API_TOKEN=12344321
 ```
 
 ### Custom Health Checks

@@ -20,8 +20,7 @@ describe HealthMonitor::HealthController, type: :controller do
 
   context 'authorized' do
     it 'returns ok with a token' do
-      request.headers['HTTP_API_TOKEN'] = ENV['HEALTH_MONITOR_API_TOKEN']
-      get :index
+      get :index, params: { API_TOKEN: ENV['HEALTH_MONITOR_API_TOKEN'] }
       expect(response.status).to eq(200)
 
       expect(response.parsed_body).to include({ 'rails_version' => Rails::VERSION::STRING, 'ruby' => 'ok' })
@@ -30,8 +29,7 @@ describe HealthMonitor::HealthController, type: :controller do
     it 'handles custom checks' do
       HealthMonitor.additional_health_checks = ['HealthControllerSpec::TestHealthCheck']
 
-      request.headers['HTTP_API_TOKEN'] = ENV['HEALTH_MONITOR_API_TOKEN']
-      get :index
+      get :index, params: { API_TOKEN: ENV['HEALTH_MONITOR_API_TOKEN'] }
       expect(response.status).to eq(200)
 
       expect(response.parsed_body).to include({ 'rails_version' => Rails::VERSION::STRING, 'ruby' => 'ok', 'test_health_check' => 'ok' })
