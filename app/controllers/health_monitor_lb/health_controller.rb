@@ -1,4 +1,4 @@
-module HealthMonitor
+module HealthMonitorLb
   class HealthController < ApplicationController
     def index
       status = HealthCheckService.new.call

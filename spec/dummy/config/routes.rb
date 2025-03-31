@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount HealthMonitor::Engine => '/'
+  mount HealthMonitorLb::Engine => '/'
 end

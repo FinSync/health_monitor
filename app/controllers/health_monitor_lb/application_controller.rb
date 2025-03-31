@@ -1,4 +1,4 @@
-module HealthMonitor
+module HealthMonitorLb
   class ApplicationController < ActionController::API
     before_action :check_api_token
 

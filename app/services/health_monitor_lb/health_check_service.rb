@@ -1,4 +1,4 @@
-module HealthMonitor
+module HealthMonitorLb
   class HealthCheckService
     def call
       status = { rails_version: Rails::VERSION::STRING }
@@ -6,7 +6,7 @@ module HealthMonitor
                .merge(postgres_check)
                .merge(redis_check)
 
-      HealthMonitor.additional_health_checks.each do |health_check_klass|
+      HealthMonitorLb.additional_health_checks.each do |health_check_klass|
         status = status.merge(health_check_klass.safe_constantize.health_check)
       end
 

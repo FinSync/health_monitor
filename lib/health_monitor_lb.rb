@@ -1,7 +1,7 @@
-require "health_monitor/version"
-require "health_monitor/engine"
+require "health_monitor_lb/version"
+require "health_monitor_lb/engine"
 
-module HealthMonitor
+module HealthMonitorLb
   mattr_accessor :additional_health_checks
   @@additional_health_checks = []
 

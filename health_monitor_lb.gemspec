@@ -1,8 +1,8 @@
-require_relative "lib/health_monitor/version"
+require_relative "lib/health_monitor_lb/version"
 
 Gem::Specification.new do |spec|
   spec.name        = "health_monitor_lb"
-  spec.version     = HealthMonitor::VERSION
+  spec.version     = HealthMonitorLb::VERSION
   spec.summary     = "Add a health check route to your Rails application for use with load balancers."
 
   spec.authors     = ["Alan Hecht", "Abe Petrillo", "Kevin Foster"]

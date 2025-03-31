@@ -8,7 +8,7 @@ require 'rspec/rails'
 require 'nulldb_rspec'
 include NullDB::RSpec::NullifiedDatabase
 
-require "health_monitor"
+require "health_monitor_lb"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

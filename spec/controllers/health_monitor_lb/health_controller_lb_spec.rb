@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-module HealthControllerSpec
+module HealthControllerLbSpec
   class TestHealthCheck
     def self.health_check
       { 'test_health_check' => 'ok' }
@@ -8,8 +8,8 @@ module HealthControllerSpec
   end
 end
 
-describe HealthMonitor::HealthController, type: :controller do
-  routes { HealthMonitor::Engine.routes }
+describe HealthMonitorLb::HealthController, type: :controller do
+  routes { HealthMonitorLb::Engine.routes }
 
   context 'not authorized' do
     it 'returns unauthorized without a token' do
@@ -27,14 +27,14 @@ describe HealthMonitor::HealthController, type: :controller do
     end
 
     it 'handles custom checks' do
-      HealthMonitor.additional_health_checks = ['HealthControllerSpec::TestHealthCheck']
+      HealthMonitorLb.additional_health_checks = ['HealthControllerLbSpec::TestHealthCheck']
 
       get :index, params: { API_TOKEN: ENV['HEALTH_MONITOR_API_TOKEN'] }
       expect(response.status).to eq(200)
 
       expect(response.parsed_body).to include({ 'rails_version' => Rails::VERSION::STRING, 'ruby' => 'ok', 'test_health_check' => 'ok' })
 
-      HealthMonitor.additional_health_checks = []
+      HealthMonitorLb.additional_health_checks = []
     end
   end
 end
