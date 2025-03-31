@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.summary     = "Add a health check route to your Rails application."
 
   spec.authors     = ["Alan Hecht", "Abe Petrillo", "Kevin Foster"]
-  spec.email       = ["alanghecht@gmail.com", "abe.petrillo@gmail.com", "kevinfoster@finsync.com"]
+  spec.email       = ["alanghecht@gmail.com", "abe.petrillo@gmail.com", "finsync-gems@finsync.com"]
   spec.description = "Add a health check route to your Rails application."
   spec.license     = "MIT"
 
