@@ -3,6 +3,7 @@ require_relative "lib/health_monitor/version"
 Gem::Specification.new do |spec|
   spec.name        = "health_monitor"
   spec.version     = HealthMonitor::VERSION
+  spec.summary     = "Add a health check route to your Rails application."
 
   spec.authors     = ["Alan Hecht", "Abe Petrillo", "Kevin Foster"]
   spec.email       = ["alanghecht@gmail.com", "abe.petrillo@gmail.com", "kevinfoster@finsync.com"]
