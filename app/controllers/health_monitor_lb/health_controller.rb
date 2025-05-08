@@ -1,6 +1,6 @@
 module HealthMonitorLb
   class HealthController < ApplicationController
-    before_action :disable_ssl, only: disable_ssl_actions
+    before_action :disable_ssl, only: :disable_ssl_actions
 
     def index
       status = HealthCheckService.new.call
