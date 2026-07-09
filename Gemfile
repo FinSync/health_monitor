@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Specify your gem's dependencies in health_monitor_lb.gemspec.
 gemspec
 
-gem 'concurrent-ruby', '1.3.4'
+gem 'concurrent-ruby', '1.3.7'
 
 group :development, :test do
   gem "rspec-rails", "~> 6.1"
